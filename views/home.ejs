@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your App Title</title>
+  <style>
+    
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+  }
+  
+  .video-background {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+  }
+  
+  video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      transform: translateX(-50%) translateY(-50%);
+  }
+  
+  .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background-color: rgba(255, 255, 255,1); /* White background with 70% opacity */
+      padding: 30px; /* Give some space inside the box */
+      border-radius: 60px; /* Rounded corners for the box */
+      color: black; /* Text color */
+  }
+    
+    
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Argent&display=swap" rel="stylesheet">
+</head>
+<body>
+  <%- include('navbar.ejs', { content: '', currentPage: 'home' }) %>
+
+  
+  <div class="video-background">
+    <video loop muted autoplay src="/video_1.mp4">
+        
+    </video>
+    <div class="content">
+        <% if (username) { %>
+        <h4>Welcome  <%= username %> This is your homepage. </h4>
+        <% } else { %>
+          
+        <h4>Welcome This is the official homepage.</h4>
+        <% } %>
+        <!-- Add more content here -->
+    </div>
+</div>
+</body>
+</html>

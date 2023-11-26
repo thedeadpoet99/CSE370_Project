@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cosplay Competition</title>
+  <!-- Your styles here -->
+</head>
+<body>
+  <%- include('navbar.ejs') %>
+  <div class="container">
+
+    <h1>Cosplay Competition</h1>
+    
+    <% if (winners.length > 0) { %>
+      <h2><%= winners.length > 1 ? "Winners: " : "Winner: " %><%= winners.join(", ") %></h2>
+    <% } else { %>
+      <h2>No winner yet</h2>
+    <% } %>
+    
+    <ul class="participants-list">
+      <% participants.forEach(participant => { %>
+        <li class="participant">
+          <h2><%= participant.name %></h2>
+          <p>Contest ID: <%= participant.contestid %></p>
+          <% if (participant.imageDataUrl) { %>
+            <img src="<%= participant.imageDataUrl %>" alt="<%= participant.name %> Photo" width="200" height="300">
+          <% } else { %>
+            <p>No photo available</p>
+          <% } %>
+          
+          <!-- Voting Form (Show only if user is logged in) -->
+          <% if (userId && userId !== participant.contestid) { %>
+            <form action="/cosplay_competition/vote" method="post">
+              <input type="hidden" name="contestantId" value="<%= participant.contestid %>">
+              <button type="submit">Vote</button>
+            </form>
+          <% } %>
+          
+        </li>
+      <% }); %>
+    </ul>
+
+    <% if (userId) { %>
+      <h2>Upload Your Photo</h2>
+      <form action="/cosplay_competition/upload" method="post">
+        <label for="photoUrl">Photo URL:</label>
+        <input type="url" name="photoUrl" required>
+        <button type="submit">Upload</button>
+      </form>
+    <% } %>
+
+  </div>
+</body>
+</html>

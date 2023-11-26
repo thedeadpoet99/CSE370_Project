@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upcoming event Events</title>
+    <!-- Add Bootstrap CDN links -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Back to Home button -->
+      <div class="mb-3">
+        <a href="/user/home" class="btn btn-secondary">Back to Home</a>
+        <a href="/events/add" class="btn btn-secondary">Add event</a>
+      </div>
+
+      <!-- Your existing content -->
+      <h1 class="text-center">Upcoming event Events</h1>
+      
+  
+      
+      <ul class="list-unstyled">
+        <% events.forEach(event => { %>
+        <li class="media mb-4">
+          <img
+            class="mr-3 event-image img-fluid"
+            src="<%= event.image_url %>"
+            alt="<%= event.name %> Image"
+            style="height: 310px; width: auto;"
+          />
+          <div class="media-body">
+            <h2 class="mt-0"><%= event.name %></h2>
+            <p><strong>Year:</strong> <%= event.year %></p>
+            <p><strong>Location:</strong> <%= event.location %></p>
+            <p><strong>Date:</strong> <%= event.date.toISOString().substr(0, 10) %></p>
+            <p><strong>Ticket Price:</strong> $<%= event.ticket_price.toFixed(2) %></p>
+            <p><strong>Attraction:</strong> <%= event.Attraction %></p>
+          </div>
+          <form action="/user/add_event" method="post">
+            <input type="hidden" name="eventName" value="<%= event.name %>">
+            <input type="hidden" name="eventYear" value="<%= event.year %>">
+            <button type="submit">Add to Events</button>
+          </form>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Anime Contest</title>
+  <!-- Add Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Your custom styles here -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    .back-to-home {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back to Home Button -->
+  <a href="/user/home" class="btn btn-secondary back-to-home">Back to Home</a>
+  
+  <div class="container">
+    <h1>Anime Contest</h1>
+    
+    <ul class="list-group anime-contest-list">
+      <% contestData.forEach(entry => { %>
+        <li class="list-group-item anime-entry">
+          <h4 class="mb-1"> <%= entry.animename %></h4>
+          <p class="mb-0">Number of Votes: <%= entry.numofvotes %></p>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+  
+  <!-- Add Bootstrap JS and Popper.js scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

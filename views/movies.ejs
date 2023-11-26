@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movies</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f6f6f6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 800px;
+      }
+
+      h1 {
+        color: #ff5a00;
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .movie img {
+        width: 80px;
+        height: 120px;
+        margin-right: 15px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .movie-details {
+        text-align: left;
+      }
+
+      .movie-title {
+        font-size: 24px;
+        margin: 0;
+        color: #333;
+      }
+
+      .movie-duration {
+        margin: 5px 0;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>List of Anime Movies</h1>
+      <ul class="menu">
+        <li><a href="/movies">Movies</a></li>
+        <li><a href="/manga">Manga</a></li>
+        <li><a href="/series">Series</a></li>
+      </ul>
+      <ul>
+        <% movies.forEach(movie => { %>
+        <li class="movie">
+          <img src="<%= movie.poster_url %>" alt="<%= movie.title %> Poster" />
+          <div class="movie-details">
+            <h2 class="movie-title"><%= movie.anime_name %></h2>
+            <p class="movie-duration">
+              Duration: <%= movie.duration %> minutes
+            </p>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>

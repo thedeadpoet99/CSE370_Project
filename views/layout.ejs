@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ... your head content ... -->
+</head>
+<body>
+  <!-- Include the common navbar -->
+  <%- include('navbar.ejs', { username: username }) %>
+
+  <!-- Include the home-specific navbar for the home page -->
+  <% if (currentPage === 'home') { %>
+    <%- include('homeNavbar.ejs') %>
+  <% } %>
+
+  <% if (currentPage === 'animelist') { %>
+    <%- include('homeNavbar.ejs') %>
+  <% } %>
+  <% if (currentPage === 'mangalist') { %>
+    <%- include('homeNavbar.ejs') %>
+  <% } %>
+
+  <div class="content">
+    <!-- This is where your page-specific content will go -->
+    <%= content %>
+  </div>
+
+  <!-- Add your scripts here -->
+</body>
+</html>

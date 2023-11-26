@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manga</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      h1 {
+        color: #3498db;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .manga-entry {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+      .manga-entry:hover {
+        background-color: #f0f0f0;
+      }
+      .manga-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 8px 15px;
+        background-color: #3498db;
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+      }
+      .manga-link:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Manga Showcase</h1>
+
+      <% mangas.forEach(manga => { %>
+      <div class="manga-entry">
+        <h2 style="color: #333"><%= manga.anime_name %></h2>
+        <p><strong>Chapters:</strong> <%= manga.chapters %></p>
+        <a class="manga-link" href="<%= manga.manga_link %>" target="_blank"
+          >Read Manga</a
+        >
+      </div>
+      <% }); %>
+    </div>
+  </body>
+</html>

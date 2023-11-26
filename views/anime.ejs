@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Anime</title>
+    <style>
+      /* Your styles here */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      ul.menu {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      ul.menu li {
+        margin: 0 10px;
+      }
+
+      ul.anime-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .anime-item {
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 20px;
+      }
+
+      .anime-image {
+        width: 200px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 20px;
+      }
+
+      .anime-details {
+        flex: 1;
+      }
+
+      h2 {
+        margin: 0;
+        color: #333;
+        font-size: 24px;
+      }
+
+      p {
+        color: #777;
+        margin: 5px 0;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('navbar.ejs') %>
+    <div class="container">
+      <h1>Anime</h1>
+      <ul class="menu">
+        <li><a href="/movies">Movies</a></li>
+        <li><a href="/manga">Manga</a></li>
+        <li><a href="/series">Series</a></li>
+      </ul>
+      <ul class="anime-list">
+        <% anime.forEach(anime => { %>
+          <li class="anime-item">
+            <img
+              class="anime-image"
+              src="<%= anime.poster_url %>"
+              alt="<%= anime.name %> Poster"
+            />
+            <div class="anime-details">
+              <h2><%= anime.name %></h2>
+              <p><strong>Studio:</strong> <%= anime.studio %></p>
+              <p>
+                <strong>Start Date:</strong> <%=
+                anime.start_date.toISOString().substr(0, 10) %>
+              </p>
+              <p><strong>Genre:</strong> <%= anime.genre %></p>
+              <p><%= anime.description %></p>
+      
+              <% if (username) { %>
+              <div class="anime-buttons">
+                <form action="/user/add-to-list" method="post">
+                  <input type="hidden" name="animename" value="<%= anime.name %>">
+                  <input type="hidden" name="listType" value="watchlist">
+                  <button type="submit">Add to Watchlist</button>
+                </form>
+                <form action="/user/add-to-list" method="post">
+                  <input type="hidden" name="animename" value="<%= anime.name %>">
+                  <input type="hidden" name="listType" value="wishlist">
+                  <button type="submit">Add to Wishlist</button>
+                </form>
+              </div>
+              <% } %>
+
+              <% if (username) { %>
+                <form action="/anime/vote" method="post">
+                  <input type="hidden" name="animeId" value="<%= anime.animeid %>">
+                  <button type="submit">Vote for Anime</button>
+                </form>
+              <% } %>
+            </div>
+          </li>
+        <% }); %>
+      </ul>
+      
+    </div>
+    </div>
+  </body>
+</html>

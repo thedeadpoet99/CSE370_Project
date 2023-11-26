@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Navigation Bar</title>
+  <!-- Add Bootstrap CDN links -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <h1>Anime <span style="color: #64b5f6;">D</span><span style="color: #f06292;">B</span></h1>
+    </a>
+    
+        
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/anime">Anime List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/events">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cosplay_competition">Cosplay Competition</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/anime_contest">Anime Contest</a>
+        </li>
+        <% if (username) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/logout">Logout</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Add your page content here -->
+
+  <!-- Add Bootstrap JS scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
